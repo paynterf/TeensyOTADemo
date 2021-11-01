@@ -2,7 +2,12 @@
 # 10/05/21 gfp - trying to run a post-build command
 # 10/15/21 gfp - change to use Tera Term macro vs custom C# program
 # 10/30/21 gfp - change to use {build.project_path}\TeensyOTA1.ttl instead of hard-coded path
+# 10/31/21 gfp - rev to use 'recipe.hooks.deploy.preupload' vs 'recipe.hooks.postbuild' so only runs on F5
+# 11/01/21 gfp - added enclosing "s as workaround for Visual Micro parsing problem
 #recipe.hooks.postbuild.1.pattern=cmd.exe /c "c:\Program Files (x86)\teraterm\ttpmacro.exe" /v "c:\users\Frank\Documents\Arduino\Teensy Projects\TeensyOTADemo\TeensyOTA1.ttl" "{vm.runtime.build.final_output_path}" {serial.port} {build.project_name}
-recipe.hooks.postbuild.1.pattern=cmd.exe /c "c:\Program Files (x86)\teraterm\ttpmacro.exe" /v "{build.project_path}\TeensyOTA1.ttl" "{vm.runtime.build.final_output_path}" {serial.port} {build.project_name}
+#recipe.hooks.postbuild.1.pattern=cmd.exe /c "c:\Program Files (x86)\teraterm\ttpmacro.exe" /v "{build.project_path}\TeensyOTA1.ttl" "{vm.runtime.build.final_output_path}" {serial.port} {build.project_name}
+#recipe.hooks.deploy.preupload.1.pattern=cmd.exe /c ""c:\Program Files (x86)\teraterm\ttpmacro.exe" /v" "{build.project_path}\TeensyOTA1.ttl" "{vm.runtime.build.final_output_path}" {serial.port} {build.project_name}
+
+recipe.hooks.deploy.preupload.1.pattern=cmd.exe /c ""c:\Program Files (x86)\teraterm\ttpmacro.exe" /v "{build.project_path}\TeensyOTA1.ttl" "{vm.runtime.build.final_output_path}" {serial.port} {build.project_name}" 
 
 
