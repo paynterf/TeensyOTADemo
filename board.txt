@@ -1,0 +1,8 @@
+# Teensy OTA Demo build property overrides
+# 10/05/21 gfp - trying to run a post-build command
+# 10/15/21 gfp - change to use Tera Term macro vs custom C# program
+# 10/30/21 gfp - change to use {build.project_path}\TeensyOTA1.ttl instead of hard-coded path
+#recipe.hooks.postbuild.1.pattern=cmd.exe /c "c:\Program Files (x86)\teraterm\ttpmacro.exe" /v "c:\users\Frank\Documents\Arduino\Teensy Projects\TeensyOTADemo\TeensyOTA1.ttl" "{vm.runtime.build.final_output_path}" {serial.port} {build.project_name}
+recipe.hooks.postbuild.1.pattern=cmd.exe /c "c:\Program Files (x86)\teraterm\ttpmacro.exe" /v "{build.project_path}\TeensyOTA1.ttl" "{vm.runtime.build.final_output_path}" {serial.port} {build.project_name}
+
+
